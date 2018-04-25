@@ -59,9 +59,6 @@ namespace HFLabsGeonames
                 }
             }
             var end = DateTime.Now;
-            //Console.WriteLine("Finished at: " + end.ToLongTimeString());
-            //Console.WriteLine("Time: " + (end - start));
-            //Console.WriteLine();
 
             GC.Collect();
 

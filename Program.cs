@@ -11,16 +11,63 @@ namespace HFLabsGeonames
     {
         static void Main(string[] args)
         {
-            // http://download.geonames.org/
-            // топ 50 городов Беларус по населению
-            // ID geonamesId, Название кириллица, название латиница, индексЮ, широта, долгота, население  (CSV, utf-8)
+            //Task1_First50BigPopulationBy(); // задание по 50 биг городам Блрс
+            Task2_ReadBigLog();
+        }
 
+        /// <summary>
+        ///В архиве(https://drive.google.com/file/d/0B9inz0bjkoAKUm5YclNYdWNzWUU) найдёте текстовый файл.
+        ///Пароль к архиву: hflabs.
+        ///Задание: ответить на вопросы.
+        ///Сколько строк в файле?
+        ///Сколько раз встречается «a»?
+        ///Какие инструменты использовали?
+        ///Сколько времени ушло на выполнение задания?
+        ///Если не готовы выполнить тестовое задание, напишите причину в сопроводительном письме.
+        /// </summary>
+        private static void Task2_ReadBigLog()
+        {
+            string filePath = "D://temp//allCountries.txt";
+            string searh = "a";
 
             DateTime end;
             DateTime start = DateTime.Now;
             Console.WriteLine("### Start Time: " + start.ToLongTimeString());
             Console.WriteLine();
 
+            var countLines = ReadFile.GetCountLines(filePath);
+            Console.WriteLine($"### Count lines: {countLines}");
+            var countChar = ReadFile.GetCountStr(filePath, searh); // с учетом регистра
+            Console.WriteLine($"### Count '{searh}': {countChar} / строка с регистром");
+            var countCharNoCase = ReadFile.GetCountStr(filePath, searh, false); // без учета регистра
+            Console.WriteLine($"### Count '{searh}': {countCharNoCase} / строка без регистром");
+            var countCharRegex = ReadFile.GetCountStrRegex(filePath, searh);
+            Console.WriteLine($"### Count '{searh}': {countCharRegex} / регулярка с регистром");
+
+
+            end = DateTime.Now;
+            Console.WriteLine();
+            Console.WriteLine("### End Time: " + end.ToLongTimeString());
+            Console.WriteLine("### Run Time: " + (end - start));
+            Console.WriteLine();
+            Console.ReadKey();
+        }
+
+
+
+
+
+        /// <summary>
+        /// http://download.geonames.org/
+        /// топ 50 городов Беларус по населению
+        /// ID geonamesId, Название кириллица, название латиница, индексЮ, широта, долгота, население  (CSV, utf-8)
+        /// </summary>
+        private static void Task1_First50BigPopulationBy()
+        {
+            DateTime end;
+            DateTime start = DateTime.Now;
+            Console.WriteLine("### Start Time: " + start.ToLongTimeString());
+            Console.WriteLine();
 
             var geoTemplate = Geoname.ReadTemplate("Template/geonames_template.txt");
             var geoPostCodeTemplate = Geoname.ReadTemplate("Template/geonames_postal_template.txt");
