@@ -14,6 +14,9 @@ namespace HFLabsGeonames
 
         public static int GetCountLines(string fileName)
         {
+            FileInfo info = new FileInfo(fileName);
+            Console.WriteLine($"### Load file: {info.Name} / {info.Length} byte");
+
             int result = 0;
             using (FileStream fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (BufferedStream bs = new BufferedStream(fs))
@@ -36,6 +39,9 @@ namespace HFLabsGeonames
         /// <returns></returns>
         public static int GetCountStr(string fileName, string searhStr, bool caseSensitive = true)
         {
+            FileInfo info = new FileInfo(fileName);
+            Console.WriteLine($"### Load file: {info.Name} / {info.Length} byte");
+
             int result = 0;
             using (FileStream fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (BufferedStream bs = new BufferedStream(fs))
@@ -57,6 +63,9 @@ namespace HFLabsGeonames
 
         public static int GetCountStrRegex(string fileName, string searhStr, bool caseSensitive = true)
         {
+            FileInfo info = new FileInfo(fileName);
+            Console.WriteLine($"### Load file: {info.Name} / {info.Length} byte");
+
             int result = 0;
             using (FileStream fs = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read))
             using (BufferedStream bs = new BufferedStream(fs))

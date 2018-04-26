@@ -11,8 +11,10 @@ namespace HFLabsGeonames
     {
         static void Main(string[] args)
         {
-            //Task1_First50BigPopulationBy(); // задание по 50 биг городам Блрс
+            
             Task2_ReadBigLog();
+
+            //Task1_First50BigPopulationBy(); // задание по 50 биг городам Блрс
         }
 
         /// <summary>
@@ -27,7 +29,7 @@ namespace HFLabsGeonames
         /// </summary>
         private static void Task2_ReadBigLog()
         {
-            string filePath = "D://temp//allCountries.txt";
+            string filePath = @"D:\work\QAtest\QAtest.txt";// "D://temp//allCountries.txt";
             string searh = "a";
 
             DateTime end;
@@ -40,7 +42,7 @@ namespace HFLabsGeonames
             var countChar = ReadFile.GetCountStr(filePath, searh); // с учетом регистра
             Console.WriteLine($"### Count '{searh}': {countChar} / строка с регистром");
             var countCharNoCase = ReadFile.GetCountStr(filePath, searh, false); // без учета регистра
-            Console.WriteLine($"### Count '{searh}': {countCharNoCase} / строка без регистром");
+            Console.WriteLine($"### Count '{searh}': {countCharNoCase} / строка без регистра");
             var countCharRegex = ReadFile.GetCountStrRegex(filePath, searh);
             Console.WriteLine($"### Count '{searh}': {countCharRegex} / регулярка с регистром");
 
